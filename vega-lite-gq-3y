@@ -1,1 +1,355 @@
-
+{
+  "data": {"name": "dataset"},
+  "padding": 10,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#ebecf0"
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "on"
+            },
+            "value": 0.4
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "name": "LEGEND",
+      "data": {
+        "values": [
+          {
+            "legend_id": 1,
+            "legend_label": "B"
+          },
+          {
+            "legend_id": 2,
+            "legend_label": "C"
+          },
+          {
+            "legend_id": 3,
+            "legend_label": "F+"
+          },
+          {
+            "legend_id": 4,
+            "legend_label": "Car Bodies"
+          }
+        ]
+      },
+      "mark": {
+        "type": "arc",
+        "radius": 0
+      },
+      "encoding": {
+        "x": {
+          "axis": {"labels": false}
+        },
+        "color": {
+          "field": "legend_label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "B",
+              "C1",
+              "F+",
+              "car-bodies"
+            ],
+            "range": [
+              "#cd4c46",
+              "#ecc846",
+              "#71afe2",
+              "#b3b3b3"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": null,
+            "labelColor": "#78faae",
+            "labelFontSize": 12,
+            "symbolSize": 150
+          }
+        }
+      }
+    },
+    {
+      "layer": [
+        {
+          "transform": [
+            {"fold": ["B", "C1"]}
+          ],
+          "mark": {
+            "type": "bar",
+            "tooltip": true
+          },
+          "encoding": {
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "axis": {
+                "zindex": 1,
+                "labelFontSize": 12,
+                "titleFontSize": 12,
+                "title": "B and C1",
+                "titleColor": "#78faae",
+                "ticks": false,
+                "labelColor": "#78faae",
+                "domain": false,
+                "grid": true,
+                "gridDash": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.02
+                      },
+                      "value": [10, 10]
+                    },
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.06
+                      },
+                      "value": [10, 10]
+                    }
+                  ],
+                  "value": [5, 5]
+                },
+                "gridColor": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.02
+                      },
+                      "value": "#cd4c46"
+                    },
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.06
+                      },
+                      "value": "#ecc846"
+                    }
+                  ],
+                  "value": "#78faae"
+                },
+                "gridWidth": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.02
+                      },
+                      "value": 2
+                    },
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 0.06
+                      },
+                      "value": 2
+                    }
+                  ],
+                  "value": 1
+                }
+              }
+            },
+            "xOffset": {"field": "key"},
+            "color": {
+              "field": "key",
+              "scale": {
+                "domain": ["B", "C1"],
+                "range": [
+                  "#cd4c46",
+                  "#ecc846"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "transform": [
+            {"fold": ["B", "C1"]}
+          ],
+          "mark": {
+            "type": "text",
+            "fill": "white",
+            "dy": -8
+          },
+          "encoding": {
+            "xOffset": {"field": "key"},
+            "text": {
+              "format": ".2f",
+              "field": "value",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#71afe2",
+            "tooltip": true
+          },
+          "encoding": {
+            "y": {
+              "field": "F+",
+              "type": "quantitative",
+              "axis": {
+                "zindex": 2,
+                "labelFontSize": 12,
+                "titleFontSize": 12,
+                "ticks": false,
+                "labelColor": "#71afe2",
+                "domain": false,
+                "titleColor": "#71afe2",
+                "grid": true,
+                "gridWidth": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 2
+                      },
+                      "value": 2
+                    }
+                  ],
+                  "value": 1
+                },
+                "gridColor": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 2
+                      },
+                      "value": "#71afe2"
+                    }
+                  ],
+                  "value": "transparent"
+                },
+                "gridDash": {
+                  "condition": [
+                    {
+                      "test": {
+                        "field": "value",
+                        "equal": 2
+                      },
+                      "value": [10, 10]
+                    }
+                  ],
+                  "value": [5, 5]
+                }
+              }
+            },
+            "xOffset": {
+              "field": "position"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fill": "white",
+            "dy": -10
+          },
+          "encoding": {
+            "xOffset": {
+              "field": "position"
+            },
+            "text": {
+              "field": "F+",
+              "format": ".2f",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "F+",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "tooltip": true,
+            "color": "#b3b3b3",
+            "strokeWidth": 4,
+            "point": {
+              "filled": true,
+              "color": "#b3b3b3",
+              "size": 100
+            }
+          },
+          "encoding": {
+            "y": {
+              "field": "Car Bodies",
+              "type": "quantitative",
+              "axis": {
+                "labelFontSize": 12,
+                "titleFontSize": 12,
+                "offset": 60,
+                "domain": false,
+                "labelColor": "#b3b3b3",
+                "ticks": false,
+                "titleColor": "#b3b3b3"
+              }
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fill": "white",
+            "dy": 15
+          },
+          "encoding": {
+            "text": {
+              "field": "car-bodies",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "car-bodies",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "YYYY-CW",
+      "axis": {
+        "labelFontSize": 12,
+        "ticks": false,
+        "labelColor": "#78faae",
+        "title": null,
+        "labelAngle": -30,
+        "domainColor": "#78faae"
+      }
+    },
+    "color": {"legend": null}
+  },
+  "resolve": {
+    "scale": {"y": "independent"}
+  }
+}
